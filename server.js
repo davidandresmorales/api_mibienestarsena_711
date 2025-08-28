@@ -3,22 +3,26 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const cors = require('cors'); // 👈 importa cors
+const cors = require('cors');
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();   
 }
 
 // settings
-app.set('port', process.env.PORT || 4000);
+app.set('port', process.env.PORT || 6000);
 
-// Middlewares
-app.use(cors({ 
-  origin: '*', // 👈 durante pruebas permite todos los orígenes
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+// ✅ Middleware CORS (esto es lo que evita el error en Flutter Web)
+app.use(cors({
+  origin: '*', // 👈 durante desarrollo permite cualquier origen
+  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type','Authorization']
 }));
 
+// Extra: manejar preflight OPTIONS
+app.options('*', cors());
+
+// Otros middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
