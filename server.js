@@ -13,11 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.set('port', process.env.PORT || 6000);
 
 // ✅ Middleware CORS (esto es lo que evita el error en Flutter Web)
-app.use(cors({
-  origin: '*', // 👈 durante desarrollo permite cualquier origen
-  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
-  allowedHeaders: ['Content-Type','Authorization']
-}));
+app.use(cors({}));
 
 // Extra: manejar preflight OPTIONS
 app.options('*', cors());
