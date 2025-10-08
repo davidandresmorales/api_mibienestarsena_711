@@ -15,7 +15,7 @@
   },
   "production": {
   "username": "davidx",
-  "password": "9LrEKdjbkH7O5MyimYL8RooyRfw3Cd7G",
+  "password": "9LrEKdjbkH7O5MyimYL8RooyRWw3Cd7G",
   "database": "db_miapi_rest_xik4",
   "host": "dpg-d3it4eumcj7s739gp17g-a.oregon-postgres.render.com",
   "port": 5432,
