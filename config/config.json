@@ -15,8 +15,8 @@
   },
   "production": {
     "username": "davidm",
-    "password": "QTKwp2fbTUQAcuoI7NGrwOORZLQP426N",
-    "database": "db_miapi_rest",
+    "password": "kCdzEMcBYWXbWcnGsx2bwFHjv1DLcdNG",
+    "database": "db_miapi_rest_jxzj",
     "host": "dpg-d2md101r0fns73d16cvg-a.oregon-postgres.render.com",
     "port": 5432, 
     "dialect": "postgres",
