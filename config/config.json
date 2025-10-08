@@ -1,24 +1,42 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "mibienestar711",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "davidm",
+    "password": "jY3TzUHBcmlFjvW9BiEXmlJck6Fz7Eq",
+    "database": "db_miapi_rest_xp8k",
+    "host": "dpg-d3isd23uibrs73d58odg-a.oregon-postgres.render.com",
+    "port": 5432,
+    "dialect": "postgres",
+    "protocol": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    },
+    "logging": false
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "mibienestar711_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "davidm",
+    "password": "jY3TzUHBcmlFjvW9BiEXmlJck6Fz7Eq",
+    "database": "db_miapi_rest_xp8k",
+    "host": "dpg-d3isd23uibrs73d58odg-a.oregon-postgres.render.com",
+    "port": 5432,
+    "dialect": "postgres",
+    "protocol": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    },
+    "logging": false
   },
   "production": {
     "username": "davidm",
-    "password": "kCdzEMcBYWXbWcnGsx2bwFHjv1DLcdNG",
-    "database": "db_miapi_rest_jxzj",
-    "host": "dpg-d2md101r0fns73d16cvg-a.oregon-postgres.render.com",
-    "port": 5432, 
+    "password": "jY3TzUHBcmlFjvW9BiEXmlJck6Fz7Eq",
+    "database": "db_miapi_rest_xp8k",
+    "host": "dpg-d3isd23uibrs73d58odg-a.oregon-postgres.render.com",
+    "port": 5432,
     "dialect": "postgres",
     "protocol": "postgres",
     "dialectOptions": {
