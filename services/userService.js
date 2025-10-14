@@ -1,70 +1,34 @@
 const db = require("../models");
+const { generarFechaSimulada } = require("../utils/fechaSimulada");
 
 const getAllUsers = async () => {
-  try {
-    let users = await db.User.findAll({
-      include: {
-        model: db.Rol,
-        required: false,
-        as: "rol", // ← CAMBIADO: de "Rol" a "rol" (minúscula)
-        attributes: ["id", "name"],
-      },
-    });
-    return users;
-  } catch (error) {
-    return error.message || "Failed to get users";
-  }
+  return await db.User.findAll({
+    include: { model: db.Rol, required: false, as: "rol", attributes: ["id", "name"] }
+  });
 };
 
 const getUser = async (id) => {
-  try {
-    let user = await db.User.findByPk(id, {
-      include: {
-        model: db.Rol,
-        required: false,
-        as: "rol", // ← CAMBIADO: de "Rol" a "rol" (minúscula)
-        attributes: ["id", "name"],
-      },
-    });
-    return user;
-  } catch (error) {
-    throw { status: 500, message: error.message || "Failed to get user" };
-  }
+  return await db.User.findByPk(id, {
+    include: { model: db.Rol, required: false, as: "rol", attributes: ["id", "name"] }
+  });
 };
 
 const createUser = async (userData) => {
-  try {
-    let newUser = await db.User.create(userData);
-    return newUser;
-  } catch (error) {
-    return error.message || "User could not be created";
-  }
+  const fecha = generarFechaSimulada();
+  return await db.User.create({ ...userData, createdAt: fecha, updatedAt: fecha });
 };
 
 const updateUser = async (id, userData) => {
-  try {
-    let updatedUser = await db.User.update(userData, {
-      where: { id }
-    });
-    return updatedUser;
-  } catch (error) {
-    return error.message || "User could not be updated";
-  }
+  const fechaActualizacion = generarFechaSimulada();
+  const updatedUser = await db.User.update(
+    { ...userData, updatedAt: fechaActualizacion },
+    { where: { id } }
+  );
+  return updatedUser;
 };
 
 const deleteUser = async (id) => {
-  try {
-    const deletedUser = await db.User.destroy({ where: { id } });
-    return deletedUser;
-  } catch (error) {
-    return error.message || "User could not be deleted";
-  }
+  return await db.User.destroy({ where: { id } });
 };
 
-module.exports = {
-  getAllUsers,
-  getUser,
-  createUser,
-  updateUser,
-  deleteUser
-};
+module.exports = { getAllUsers, getUser, createUser, updateUser, deleteUser };

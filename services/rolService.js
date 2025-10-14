@@ -1,57 +1,29 @@
 const db = require("../models");
+const { generarFechaSimulada } = require("../utils/fechaSimulada");
 
 const getAllRols = async () => {
-  try {
-    let rols = await db.Rol.findAll();
-    return rols;
-  } catch (error) {
-    return error.message || "Failed to get rols";
-  }
+  return await db.Rol.findAll();
 };
 
 const getRol = async (id) => {
-  try {
-    let rol = await db.Rol.findByPk(id);
-    return rol;
-  } catch (error) {
-    throw { status: 500, message: error.message || "Failed to get rol" };
-  }
+  return await db.Rol.findByPk(id);
 };
 
 const createRol = async (name) => {
-  try {
-    let newRol = await db.Rol.create({ name });
-    return newRol;
-  } catch (error) {
-    return error.message || "Rol could not be created";
-  }
+  const fecha = generarFechaSimulada();
+  return await db.Rol.create({ name, createdAt: fecha, updatedAt: fecha });
 };
 
 const updateRol = async (id, name) => {
-  try {
-    let updatedRol = await db.Rol.update(
-      { name },
-      { where: { id } }
-    );
-    return updatedRol;
-  } catch (error) {
-    return error.message || "Rol could not be updated";
-  }
+  const fechaActualizacion = generarFechaSimulada();
+  return await db.Rol.update(
+    { name, updatedAt: fechaActualizacion },
+    { where: { id } }
+  );
 };
 
 const deleteRol = async (id) => {
-  try {
-    const deletedRol = await db.Rol.destroy({ where: { id } });
-    return deletedRol;
-  } catch (error) {
-    return error.message || "Rol could not be deleted";
-  }
+  return await db.Rol.destroy({ where: { id } });
 };
 
-module.exports = {
-  getAllRols,
-  getRol,
-  createRol,
-  updateRol,
-  deleteRol,
-};
+module.exports = { getAllRols, getRol, createRol, updateRol, deleteRol };
